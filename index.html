@@ -243,6 +243,7 @@ t<!DOCTYPE html>
          </p>
                
       <h3 id="References">References</h3>
+      
       <p>
          
          <br> www.sciencemuseum.org.uk. (n.d.). Telling the time with the Sun | Science Museum. [online] Available at:<a href=https://www.sciencemuseum.org.uk/objects-and-stories/telling-time-sun>https://www.sciencemuseum.org.uk/objects-and-stories/telling-time-sun</a>                                                                                                                                                                                          
@@ -257,59 +258,6 @@ t<!DOCTYPE html>
          <br>Ashby, N. (2003). Relativity in the Global Positioning System. Living Reviews in Relativity, [online] 6(1). doi:<a href=https://doi.org/10.12942/lrr-2003-1>https://doi.org/10.12942/lrr-2003-1</a>
          <br>All images are under creative common licence.
              </p>  
-<script>
-  // ---- GOOGLE TIMELINE ----
-  google.charts.load('current', {packages:['timeline']});
-  google.charts.setOnLoadCallback(drawTimeline);
-
-  function drawTimeline() {
-      var container = document.getElementById('chart_div');
-      var chart = new google.visualization.Timeline(container);
-      var dataTable = new google.visualization.DataTable();
-
-      dataTable.addColumn({ type: 'string', id: 'Era' });
-      dataTable.addColumn({ type: 'string', id: 'Event' });
-      dataTable.addColumn({ type: 'string', role: 'tooltip', p: {html: true}});
-      dataTable.addColumn({ type: 'date', id: 'Start' });
-      dataTable.addColumn({ type: 'date', id: 'End' });
-
-      dataTable.addRows([
-          ['Ancient', 'Sundials (15000 BCE)',
-           '<b>Sundials (15000 BCE)</b><br>Shadows used to track apparent solar time.<br>Limited by sunlight.',
-           new Date(0,0,1), new Date(1000,0,1)],
-
-          ['Medieval', 'Mechanical Clocks (1300 CE)',
-           '<b>Mechanical Clocks (1300 CE)</b><br>Weight-driven, verge escapement.',
-           new Date(1300,0,1), new Date(1656,0,1)],
-
-          ['Scientific', 'Pendulum Clock (1656)',
-           '<b>Pendulum Clock (1656)</b><br>Huygens improves accuracy to seconds/day.',
-           new Date(1656,0,1), new Date(1761,0,1)],
-
-          ['Navigation', 'Marine Chronometer (1761)',
-           '<b>Marine Chronometer (1761)</b><br>Harrison solves longitude.',
-           new Date(1761,0,1), new Date(1955,0,1)],
-
-          ['Modern', 'Atomic Clock (1955)',
-           '<b>Atomic Clock (1955)</b><br>Cesium clocks redefine accuracy.',
-           new Date(1955,0,1), new Date(1978,0,1)],
-
-          ['Modern', 'GPS Atomic Clocks (1978)',
-           '<b>GPS Clocks (1978)</b><br>Relativity-corrected satellite time.',
-           new Date(1978,0,1), new Date(2010,0,1)],
-
-          ['Contemporary', 'Clock Fusion (2010+)',
-           '<b>Clock Fusion (2010+)</b><br>Redundant, secure timing sources.',
-           new Date(2010,0,1), new Date(2025,0,1)]
-      ]);
-
-      chart.draw(dataTable, {
-          tooltip: {isHtml: true},
-          timeline: {colorByRowLabel: true},
-          height: 500
-      });
-  }
-</script>
 
 <script>
    
@@ -383,16 +331,16 @@ t<!DOCTYPE html>
   // Function to calculate and display total word count from selected sections
   function displayTotalWordCount() {
     // Calculate word count for each section and accumulate the total
-   const IntroductionCount = displayWordCount("Abstract");
-   const AnalysisCount = displayWordCount("introduction");
-   const AnalysisCount = displayWordCount("Sundials");
-   const AnalysisCount = displayWordCount("WeightGravitydrivenmechanicalclocks");
-   const AnalysisCount = displayWordCount("Marinechronometersandstabiliser");
-   const AnalysisCount = displayWordCount("Clockfusion");
-   const AnalysisCount = displayWordCount("AtomicandGPSclocks");
-   const AnalysisCount = displayWordCount("Conclusion");
+   const AbstractCount = displayWordCount("Abstract_InText");
+   const introductionCount = displayWordCount("introduction_InText");
+   const SundialsCount = displayWordCount("Sundials_InText");
+   const WeightGravitydrivenmechanicalclocksCount = displayWordCount("WeightGravitydrivenmechanicalclocks_InText");
+   const MarinechronometersandstabiliserCount = displayWordCount("Marinechronometersandstabiliser_InText");
+   const ClockfusionCount = displayWordCount("Clockfusion_InText");
+   const AtomicandGPSclocksCount = displayWordCount("AtomicandGPSclocks_InText");
+   const ConclusionCount = displayWordCount("Conclusion_InText");
     // Calculate the sum of all selected sections
-    const totalWordCount = Abstract + introduction + Sundials + WeightGravitydrivenmechanicalclocks + Marinechronometersandstabiliser + Clockfusion + AtomicandGPSclocks + Conclusion;
+    const totalWordCount = AbstractCount + introductionCount + SundialsCount + WeightGravitydrivenmechanicalclocksCount + MarinechronometersandstabiliserCount + ClockfusionCount + AtomicandGPSclocksCount + ConclusionCount;
     // Display the total word count
     document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
   }
