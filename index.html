@@ -242,7 +242,7 @@
          control of storage energy variations in motion, and temperature, to signal integrity, and relativistic drift. These innovations have transformed timekeeping from a solely local observation into a globally synchronised infrastructure.
          </p>
                
-         <h3>Word Count (Introduction → Conclusion)</h3>
+         <h3>Word Count (Abstract → Conclusion)</h3>
 <p id="wordcount" style="font-weight:bold;"></p>
 
 <h3>Last Modified Time (GitHub)</h3>
@@ -270,9 +270,7 @@
          <br>All images are under creative common licence.
              </p>  
             <script>
-// ----------------------------------------------------
-// 1) GOOGLE CHART — Timekeeping Accuracy (LO 3.2)
-// ----------------------------------------------------
+
 google.charts.load('current', {packages:['corechart']});
 google.charts.setOnLoadCallback(drawChart);
 
@@ -300,10 +298,6 @@ function drawChart() {
 }
 
 
-// ----------------------------------------------------
-// 2) WORD COUNT FOR SECTIONS (LO 3.4)
-// Counts text from Introduction → Conclusion
-// ----------------------------------------------------
 function countWords(text) {
     return text.trim().split(/\s+/).filter(word => word.length > 0).length;
 }
@@ -325,10 +319,6 @@ function updateWordCount() {
 
 updateWordCount();
 
-
-// ----------------------------------------------------
-// 3) GITHUB LAST MODIFIED TIMESTAMP (LO 3.3)
-// ----------------------------------------------------
 async function getLastUpdatedTime() {
     const response = await fetch("https://api.github.com/repos/FEPSFY6924601/FY6924601/commits");
     const data = await response.json();
@@ -338,7 +328,6 @@ async function getLastUpdatedTime() {
         "Last Modified (from GitHub API): " + new Date(lastUpdate).toLocaleString();
 }
 
-// Button-triggered verification
 function verifyLastModified() {
     getLastUpdatedTime();
 }
