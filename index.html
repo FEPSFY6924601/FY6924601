@@ -242,13 +242,6 @@ t<!DOCTYPE html>
          control of storage energy variations in motion, and temperature, to signal integrity, and relativistic drift. These innovations have transformed timekeeping from a solely local observation into a globally synchronised infrastructure.
          </p>
                
-         <h3>Word Count (Abstract → Conclusion)</h3>
-<p id="wordcount" style="font-weight:bold;"></p>
-
-<h3>Last Modified Time (GitHub)</h3>
-<p id="lastModified" style="font-weight:bold;"></p>
-<button onclick="verifyLastModified()">Verify Last Modified Time</button>
-               
       <h3 id="References">References</h3>
       
       <p>
@@ -267,15 +260,12 @@ t<!DOCTYPE html>
 
 <script>
    
-<h3>Word Count (Abstract → Conclusion)</h3>
-<p id="wordcount" style="font-weight:bold;"></p>
-<hr>
+   <h3>Last Modified Time (GitHub)</h3>
+<p id="lastModified" style="font-weight:bold;"></p>
+<button onclick="verifyLastModified()">Verify Last Modified Time</button>
 
             <div id="last-updated">Loading last update time...</div>
-<!-- Verify Button -->
-<button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
-    Verify Last Modified Time
-</button>
+
 <script>
     async function getLastUpdatedTime() {
         const username = 'FEPSFY6924601';
@@ -320,8 +310,8 @@ t<!DOCTYPE html>
   <!-- ////////////////////////////// Word count function ////////////////////////////// -->
 
 <!-- Placeholder for total word count -->
-<p id="totalWordCount"></p>
-<hr>
+         <h3>Word Count (Abstract → Conclusion)</h3>
+<p id="totalWordCount" style="font-weight:bold;"></p>
 <script>
   // Function to calculate and display word count for a specified section
   function displayWordCount(sectionId, outputId) {
