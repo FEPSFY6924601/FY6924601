@@ -66,62 +66,6 @@
         font-size: 14px;
         margin-top: 8px; 
 
-   <!-- GOOGLE CHARTS + WORD COUNT + TIMESTAMP -->
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-<script>
-// ----------------------------
-// 1) TIMESTAMP
-// ----------------------------
-window.onload = function () {
-    const now = new Date();
-    document.getElementById("timestamp").textContent =
-        "Page loaded on: " + now.toLocaleString();
-
-    updateWordCount();
-};
-
-// ----------------------------
-// 2) WORD COUNT OF ENTIRE DOCUMENT
-// ----------------------------
-function updateWordCount() {
-    const text = document.body.innerText;
-    const words = text.trim().split(/\s+/).length;
-    document.getElementById("wordcount").textContent =
-        "Total Word Count: " + words;
-}
-
-// Update in case images/videos load later
-setTimeout(updateWordCount, 1000);
-
-// ----------------------------
-// 3) GOOGLE CHART
-// ----------------------------
-google.charts.load('current', { packages: ['corechart'] });
-google.charts.setOnLoadCallback(drawChart);
-
-function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-        ['Technology', 'Accuracy'],
-        ['Sundials', 1],
-        ['Mechanical Clocks', 3],
-        ['Marine Chronometers', 6],
-        ['Atomic Clocks', 10],
-        ['GPS Time', 9]
-    ]);
-
-    var options = {
-        title: 'Relative Accuracy of Timekeeping Methods (Scale 1–10)'
-    };
-
-    var chart = new google.visualization.ColumnChart(
-        document.getElementById('chart_div')
-    );
-
-    chart.draw(data, options);
-}
-</script>
-       
        </style>
             <body style="background-color:#FFFFFF;margin-left:50px;">
     <table>
@@ -312,13 +256,6 @@ function drawChart() {
          <br>Ashby, N. (2003). Relativity in the Global Positioning System. Living Reviews in Relativity, [online] 6(1). doi:<a href=https://doi.org/10.12942/lrr-2003-1>https://doi.org/10.12942/lrr-2003-1</a>
          <br>All images are under creative common licence.
              </p>   
-
-               <p id="timestamp" style="font-weight:bold;"></p>
-<p id="wordcount" style="font-weight:bold;"></p>
-
-               <hr>
-<h3>Timekeeping Accuracy Chart</h3>
-<div id="chart_div" style="width: 900px; height: 500px;"></div>
 
             </body>
         </html>
