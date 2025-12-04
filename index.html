@@ -332,10 +332,10 @@ function countWords(text) {
 function updateWordCount() {
     const intro = document.getElementById("Introduction").innerText;
     const sundials = document.getElementById("Sundials").innerText;
-    const mech = document.getElementById("Weight / Gravity driven mechanical clocks").innerText;
-    const marine = document.getElementById("Marine chronometers and stabiliser").innerText;
-    const fusion = document.getElementById("Clock fusion").innerText;
-    const gps = document.getElementById("Atomic and GPS clocks").innerText;
+    const mech = document.getElementById("WeightGravitydrivenmechanicalclocks").innerText;
+    const marine = document.getElementById("Marinechronometersandstabiliser").innerText;
+    const fusion = document.getElementById("Clockfusion").innerText;
+    const gps = document.getElementById("AtomicandGPSclocks").innerText;
     const conc = document.getElementById("Conclusion").innerText;
 
     const totalWords = countWords(intro + sundials + mech + marine + fusion + gps + conc);
