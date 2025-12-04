@@ -258,20 +258,19 @@ t<!DOCTYPE html>
          <br>All images are under creative common licence.
              </p>  
 
-<script>
-   
-   <h3>Last Modified Time (GitHub)</h3>
-<p id="lastModified" style="font-weight:bold;"></p>
-<button onclick="verifyLastModified()">Verify Last Modified Time</button>
-
-            <div id="last-updated">Loading last update time...</div>
-
+<!-- Last commit time display -->
+<div id="last-updated">Loading last update time...</div>
+<!-- Verify Button -->
+<button onclick="verifyLastUpdatedTime()" style="display: block; margin: 10px auto; padding: 8px 16px;">
+    Verify Last Modified Time
+</button>
 <script>
     async function getLastUpdatedTime() {
         const username = 'FEPSFY6924601';
-        const repo = 'FY6924601';
+        const repo = 'FY6924601
+';
        
-        const url = `https://api.github.com/repos/${username}/${repo}/commits`;
+        const url = https://api.github.com/repos/${username}/${repo}/commits;
         try {
             const response = await fetch(url, {
                 method: 'GET',
@@ -280,14 +279,14 @@ t<!DOCTYPE html>
                 }
             });
             if (!response.ok) {
-                throw new Error(`Error fetching data: ${response.status} - ${response.statusText}`);
+                throw new Error(Error fetching data: ${response.status} - ${response.statusText});
             }
             const commits = await response.json();
             if (commits && commits.length > 0) {
                 const lastCommitDate = new Date(commits[0].commit.committer.date);
                
                 // Displaying the time on load
-                document.getElementById('last-updated').innerText = `Last Modified Time: ${lastCommitDate.toLocaleString()}`;
+                document.getElementById('last-updated').innerText = Last Modified Time: ${lastCommitDate.toLocaleString()};
             } else {
                 document.getElementById('last-updated').innerText = 'No commits found in the repository.';
             }
@@ -305,13 +304,9 @@ t<!DOCTYPE html>
     // Initial load to display the time on page load
     window.onload = getLastUpdatedTime;
 </script>
-
-
-  <!-- ////////////////////////////// Word count function ////////////////////////////// -->
-
 <!-- Placeholder for total word count -->
-         <h3>Word Count (Abstract → Conclusion)</h3>
-<p id="totalWordCount" style="font-weight:bold;"></p>
+<p id="totalWordCount"></p>
+<hr>
 <script>
   // Function to calculate and display word count for a specified section
   function displayWordCount(sectionId, outputId) {
@@ -338,13 +333,12 @@ t<!DOCTYPE html>
     // Calculate the sum of all selected sections
     const totalWordCount = AbstractCount + introductionCount + SundialsCount + WeightGravitydrivenmechanicalclocksCount + MarinechronometersandstabiliserCount + ClockfusionCount + AtomicandGPSclocksCount + ConclusionCount;
     // Display the total word count
-    document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
+    document.getElementById("totalWordCount").innerText = Total word count: ${totalWordCount};
   }
   // Run the function for specific sections and display total count when the page loads
   window.onload = displayTotalWordCount;
+   < wordcount_InText>Total word count:
 </script>
-
-
             </body>
         </html>
 
