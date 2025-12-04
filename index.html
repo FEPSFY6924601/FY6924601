@@ -267,7 +267,84 @@
          <br>NIST’s Cesium Fountain Atomic Clocks. (2009). NIST. [online] Available at:<a href=https://www.nist.gov/pml/time-and-frequency-division/time-realization/cesium-fountain-atomic-clocks>https://www.nist.gov/pml/time-and-frequency-division/time-realization/cesium-fountain-atomic-clocks</a>
          <br>Ashby, N. (2003). Relativity in the Global Positioning System. Living Reviews in Relativity, [online] 6(1). doi:<a href=https://doi.org/10.12942/lrr-2003-1>https://doi.org/10.12942/lrr-2003-1</a>
          <br>All images are under creative common licence.
-             </p>   
+             </p>  
+            <script>
+// ----------------------------------------------------
+// 1) GOOGLE CHART — Timekeeping Accuracy (LO 3.2)
+// ----------------------------------------------------
+google.charts.load('current', {packages:['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+        ['Timekeeping Method', 'Relative Accuracy'],
+        ['Sundials', 1],
+        ['Mechanical Clocks', 3],
+        ['Marine Chronometers', 6],
+        ['Atomic Clocks', 10],
+        ['GPS Time', 9]
+    ]);
+
+    var options = {
+        title: 'Evolution of Timekeeping Accuracy',
+        hAxis: { title: 'Timekeeping Method' },
+        vAxis: { title: 'Accuracy (1–10)' },
+        legend: { position: 'none' }
+    };
+
+    var chart = new google.visualization.ColumnChart(
+        document.getElementById('chart_div')
+    );
+    chart.draw(data, options);
+}
+
+
+// ----------------------------------------------------
+// 2) WORD COUNT FOR SECTIONS (LO 3.4)
+// Counts text from Introduction → Conclusion
+// ----------------------------------------------------
+function countWords(text) {
+    return text.trim().split(/\s+/).filter(word => word.length > 0).length;
+}
+
+function updateWordCount() {
+    const intro = document.getElementById("Introduction").innerText;
+    const sundials = document.getElementById("Sundials").innerText;
+    const mech = document.getElementById("Weight / Gravity driven mechanical clocks").innerText;
+    const marine = document.getElementById("Marine chronometers and stabiliser").innerText;
+    const fusion = document.getElementById("Clock fusion").innerText;
+    const gps = document.getElementById("Atomic and GPS clocks").innerText;
+    const conc = document.getElementById("Conclusion").innerText;
+
+    const totalWords = countWords(intro + sundials + mech + marine + fusion + gps + conc);
+
+    document.getElementById("wordcount").textContent =
+        "Total Word Count (Introduction → Conclusion): " + totalWords;
+}
+
+updateWordCount();
+
+
+// ----------------------------------------------------
+// 3) GITHUB LAST MODIFIED TIMESTAMP (LO 3.3)
+// ----------------------------------------------------
+async function getLastUpdatedTime() {
+    const response = await fetch("https://api.github.com/repos/FEPSFY6924601/FY6924601/commits");
+    const data = await response.json();
+    const lastUpdate = data[0].commit.author.date;
+
+    document.getElementById("lastModified").innerText =
+        "Last Modified (from GitHub API): " + new Date(lastUpdate).toLocaleString();
+}
+
+// Button-triggered verification
+function verifyLastModified() {
+    getLastUpdatedTime();
+}
+
+getLastUpdatedTime();
+
+</script>
 
             </body>
         </html>
