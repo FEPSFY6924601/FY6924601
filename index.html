@@ -271,60 +271,6 @@
              </p>  
 
 <script>
-  // ---- GOOGLE TIMELINE ----
-  google.charts.load('current', {packages:['timeline']});
-  google.charts.setOnLoadCallback(drawTimeline);
-
-  function drawTimeline() {
-      var container = document.getElementById('chart_div');
-      var chart = new google.visualization.Timeline(container);
-      var dataTable = new google.visualization.DataTable();
-
-      dataTable.addColumn({ type: 'string', id: 'Era' });
-      dataTable.addColumn({ type: 'string', id: 'Event' });
-      dataTable.addColumn({ type: 'string', role: 'tooltip', p: {html: true}});
-      dataTable.addColumn({ type: 'date', id: 'Start' });
-      dataTable.addColumn({ type: 'date', id: 'End' });
-
-      dataTable.addRows([
-          ['Ancient', 'Sundials (15000 BCE)',
-           '<b>Sundials (15000 BCE)</b><br>Shadows used to track apparent solar time.<br>Limited by sunlight.',
-           new Date(0,0,1), new Date(1000,0,1)],
-
-          ['Medieval', 'Mechanical Clocks (1300 CE)',
-           '<b>Mechanical Clocks (1300 CE)</b><br>Weight-driven, verge escapement.',
-           new Date(1300,0,1), new Date(1656,0,1)],
-
-          ['Scientific', 'Pendulum Clock (1656)',
-           '<b>Pendulum Clock (1656)</b><br>Huygens improves accuracy to seconds/day.',
-           new Date(1656,0,1), new Date(1761,0,1)],
-
-          ['Navigation', 'Marine Chronometer (1761)',
-           '<b>Marine Chronometer (1761)</b><br>Harrison solves longitude.',
-           new Date(1761,0,1), new Date(1955,0,1)],
-
-          ['Modern', 'Atomic Clock (1955)',
-           '<b>Atomic Clock (1955)</b><br>Cesium clocks redefine accuracy.',
-           new Date(1955,0,1), new Date(1978,0,1)],
-
-          ['Modern', 'GPS Atomic Clocks (1978)',
-           '<b>GPS Clocks (1978)</b><br>Relativity-corrected satellite time.',
-           new Date(1978,0,1), new Date(2010,0,1)],
-
-          ['Contemporary', 'Clock Fusion (2010+)',
-           '<b>Clock Fusion (2010+)</b><br>Redundant, secure timing sources.',
-           new Date(2010,0,1), new Date(2025,0,1)]
-      ]);
-
-      chart.draw(dataTable, {
-          tooltip: {isHtml: true},
-          timeline: {colorByRowLabel: true},
-          height: 500
-      });
-  }
-</script>
-
-<script>
    
 <h3>Word Count (Abstract → Conclusion)</h3>
 <p id="wordcount" style="font-weight:bold;"></p>
