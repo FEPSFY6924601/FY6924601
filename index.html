@@ -83,16 +83,16 @@
         <td><a href="#Sundials">Sundials</td>
       </tr>
        <tr>
-        <td><a href="#Weight / Gravity driven mechanical clocks">Weight / Gravity driven mechanical clocks</td>
+        <td><a href="#WeightGravitydrivenmechanicalclocks">Weight / Gravity driven mechanical clocks</td>
       </tr>
        <tr>
-         <td><a href="#Marine chronometers and stabiliser">Marine chronometers and stabiliser</td>
+         <td><a href="#Marinechronometersandstabiliser">Marine chronometers and stabiliser</td>
       </tr>
        <tr>
-        <td><a href="#Clock fusion">Clock fusion</td>
+        <td><a href="#Clockfusion">Clock fusion</td>
       </tr>
        <tr> 
-        <td><a href="#Atomic and GPS clocks">Atomic and GPS clocks</td>
+        <td><a href="#AtomicandGPSclocks">Atomic and GPS clocks</td>
       </tr>
        <tr>
         <td><a href="#Conclusion">Conclusion</td>
@@ -144,7 +144,7 @@
       
 
                           
-      <h3 id="Weight / Gravity driven mechanical clocks">Weight / Gravity driven mechanical clocks</h3>
+      <h3 id="WeightGravitydrivenmechanicalclocks">Weight / Gravity driven mechanical clocks</h3>
    
        <p>
           Gravity and weight driven mechanical clocks created in Medieval Europe. 
@@ -172,7 +172,7 @@
               </div>
 
 
-      <h3 id="Marine chronometers and stabiliser">Marine chronometers and stabiliser</h3>
+      <h3 id="Marinechronometersandstabiliser">Marine chronometers and stabiliser</h3>
 
       <p>
          Accurate timekeeping became an essential component of sea travel in the 18th century as a determining the longitude required a precise comparison between local time and a reliable reference,
@@ -196,7 +196,7 @@
     </figure>
          </div>
 
-      <h3 id="Clock fusion">Clock fusion</h3>
+      <h3 id="Clockfusion">Clock fusion</h3>
 
       <p>
          Modern “clock fusion” refers to the integration of multiple time sources such as a Caesium atomic clock, GNSS-discipline oscillators, and network-based feeds.
@@ -217,7 +217,7 @@
     </figure>
          </div>
                
-      <h3 id="Atomic and GPS clocks">Atomic and GPS clocks</h3>
+      <h3 id="AtomicandGPSclocks">Atomic and GPS clocks</h3>
 
       <p>
          Atomic clocks are some of the most accurate devices ever created fountain clocks like those built by NIST can you keep time with an eternity as small as one part in 10^16 means they lose less than a second over millions of years.
@@ -271,31 +271,58 @@
              </p>  
             <script>
 
-google.charts.load('current', {packages:['corechart']});
-google.charts.setOnLoadCallback(drawChart);
+google.charts.load('current', {packages:['annotationchart']});
+google.charts.setOnLoadCallback(drawTimeline);
 
-function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-        ['Timekeeping Method', 'Relative Accuracy'],
-        ['Sundials', 1],
-        ['Mechanical Clocks', 3],
-        ['Marine Chronometers', 6],
-        ['Atomic Clocks', 10],
-        ['GPS Time', 9]
+function drawTimeline() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('date', 'Year');
+    data.addColumn('number', 'Milestone');  
+    data.addColumn('string', 'Title');
+    data.addColumn('string', 'Description');
+
+    data.addRows([
+        [new Date(-15000, 0, 1), 1, 
+         'Sundials (15000 BCE)',
+         'Shadows used to measure apparent solar time; limited by sunlight and seasonal hours.'],
+
+        [new Date(1300, 0, 1), 2,
+         'Mechanical Clocks (1300 CE)',
+         'Weight-driven clocks with verge escapements; first autonomous timekeepers.'],
+
+        [new Date(1656, 0, 1), 3,
+         'Pendulum Clock (1656)',
+         'Huygens introduces pendulum. Accuracy improves from minutes to seconds per day.'],
+
+        [new Date(1761, 0, 1), 4,
+         'Marine Chronometer (1761)',
+         'Harrison solves longitude with spring-balanced, motion-resistant chronometer.'],
+
+        [new Date(1955, 0, 1), 5,
+         'Atomic Clock (1955)',
+         'Cesium-133 resonance defines the second; accuracy reaches 10⁻¹².'],
+
+        [new Date(1978, 0, 1), 6,
+         'GPS Atomic Clocks (1978)',
+         'Relativity-corrected satellite clocks enable global navigation.'],
+
+        [new Date(2010, 0, 1), 7,
+         'Clock Fusion (2010+)',
+         'Redundant atomic, GNSS, and local oscillators merged for resilient timing.']
     ]);
 
-    var options = {
-        title: 'Evolution of Timekeeping Accuracy',
-        hAxis: { title: 'Timekeeping Method' },
-        vAxis: { title: 'Accuracy (1–10)' },
-        legend: { position: 'none' }
-    };
-
-    var chart = new google.visualization.ColumnChart(
+    var chart = new google.visualization.AnnotationChart(
         document.getElementById('chart_div')
     );
-    chart.draw(data, options);
+
+    chart.draw(data, {
+        displayAnnotations: true,
+        thickness: 2,
+        zoomStartTime: new Date(-2000, 0, 1),
+        zoomEndTime: new Date(2025, 0, 1)
+    });
 }
+
 
 
 function countWords(text) {
