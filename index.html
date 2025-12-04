@@ -107,7 +107,7 @@
   <hr>
     <h3 id="Abstract">Abstract</h3>
     
-      <p>
+      <p id="Abstract">
          Time is important to all modern civilisations, and this article aims to examine its most prominent developments.
          Firstly, I explain how shadows were used to measure the passage of time and its limitations,
          then how mechanical clocks and marine chronometers improved accuracy by controlling motion. Finally,
@@ -115,7 +115,7 @@
    
  <h3 id="Introduction">Introduction</h3>
       
-        <p>
+        <p id="introText">
            Throughout thousands of years, Time has been essential to the organisation, technology, economy,
            and communication within mordem civilisation. Consequently, individuals have device continuous and innovative methods to measure time,
            ranging from the geometry of shadows, shipp ready chronometers and exact fusion clocks. Society has looked enhance each iteration
@@ -124,7 +124,7 @@
          
    <h3 id="Sundials">Sundials</h3>
    
-       <p>
+       <p id="Sundials">
          Some tiles are broadly recognised as the earliest tools used for time measurement.
          They operate by tracking the shadows cast upon an object as the Suns position relative to the Earth shifts,
          Thereby indicating the apparent solar time.  The earliest known sundials 15,000  BCE, with Thutmose III in Egypt,
@@ -146,7 +146,7 @@
                           
       <h3 id="WeightGravitydrivenmechanicalclocks">Weight / Gravity driven mechanical clocks</h3>
    
-       <p>
+       <p id="WeightGravitydrivenmechanicalclocks">
           Gravity and weight driven mechanical clocks created in Medieval Europe. 
           They are among the earliest autonomous devices for timekeeping independent from celestial observations,
           thereby making a significant technological advancement in time measurement. The earliest tower clocks for documented between the 13th and 14th centuries,
@@ -174,7 +174,7 @@
 
       <h3 id="Marinechronometersandstabiliser">Marine chronometers and stabiliser</h3>
 
-      <p>
+     <p id="Marinechronometersandstabiliser">
          Accurate timekeeping became an essential component of sea travel in the 18th century as a determining the longitude required a precise comparison between local time and a reliable reference,
          typically Greenwitch mean time, traditional pendulum clocks were unsuitable for ships because of the constant motion, humidity and temperature changes, 
          which negatively affected the pendulous accuracy resulting in significant navigational errors. John Harrison’s innovation revolutionised Marine timekeeping with chronometers that replaced the pendulum with a spring mechanism,
@@ -198,7 +198,7 @@
 
       <h3 id="Clockfusion">Clock fusion</h3>
 
-      <p>
+      <p id="Clockfusion">
          Modern “clock fusion” refers to the integration of multiple time sources such as a Caesium atomic clock, GNSS-discipline oscillators, and network-based feeds.
          They use hardware and algorithmic frameworks to enhance accuracy performance, 
          creating a resilience against signal loss or manipulation.
@@ -219,7 +219,7 @@
                
       <h3 id="AtomicandGPSclocks">Atomic and GPS clocks</h3>
 
-      <p>
+      <p id="AtomicandGPSclocks">
          Atomic clocks are some of the most accurate devices ever created fountain clocks like those built by NIST can you keep time with an eternity as small as one part in 10^16 means they lose less than a second over millions of years.
          They work by measuring the natural vibration of cesium atoms which says an extremely stable overtime. GPS satellite also use atomic clocks to provide precise location data however because satellite move fast and orbit and we could gravity they their clocks run slightly different rates relativity corrections
          are applied to keep them accurate. Vivaldi corrections UPS with drift by kilometres each day to get atomic and GPS clocks support navigation, communication, communications and global timekeeping. <br> <br> Citations:
@@ -236,7 +236,7 @@
                
       <h3 id="Conclusion">Conclusion</h3>
 
-      <p>
+      <p id="Conclusion">
          In conclusion, from shadow-based sundials to gravitational escapements, marine chronometers, Clock fusion systems, 
          and relativistic satellite time, each technological advancement addresses a stability change such as dependence of sunlight, 
          control of storage energy variations in motion, and temperature, to signal integrity, and relativistic drift. These innovations have transformed timekeeping from a solely local observation into a globally synchronised infrastructure.
@@ -269,83 +269,98 @@
          <br>Ashby, N. (2003). Relativity in the Global Positioning System. Living Reviews in Relativity, [online] 6(1). doi:<a href=https://doi.org/10.12942/lrr-2003-1>https://doi.org/10.12942/lrr-2003-1</a>
          <br>All images are under creative common licence.
              </p>  
-            <script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-google.charts.load('current', {packages:['annotationchart']});
+<script>
+// ---------------------------
+// FIXED INTERACTIVE TIMELINE
+// ---------------------------
+google.charts.load('current', {packages:['timeline']});
 google.charts.setOnLoadCallback(drawTimeline);
 
 function drawTimeline() {
-    var data = new google.visualization.DataTable();
-    data.addColumn('date', 'Year');
-    data.addColumn('number', 'Milestone');  
-    data.addColumn('string', 'Title');
-    data.addColumn('string', 'Description');
+    var container = document.getElementById('chart_div');
+    var chart = new google.visualization.Timeline(container);
+    var dataTable = new google.visualization.DataTable();
 
-    data.addRows([
-        [new Date(-15000, 0, 1), 1, 
-         'Sundials (15000 BCE)',
-         'Shadows used to measure apparent solar time; limited by sunlight and seasonal hours.'],
+    dataTable.addColumn({ type: 'string', id: 'Era' });
+    dataTable.addColumn({ type: 'string', id: 'Event' });
+    dataTable.addColumn({ type: 'string', role: 'tooltip', p: {html: true}});
+    dataTable.addColumn({ type: 'date', id: 'Start' });
+    dataTable.addColumn({ type: 'date', id: 'End' });
 
-        [new Date(1300, 0, 1), 2,
-         'Mechanical Clocks (1300 CE)',
-         'Weight-driven clocks with verge escapements; first autonomous timekeepers.'],
+    dataTable.addRows([
+        ['Ancient', 'Sundials (15000 BCE)',
+         '<b>Sundials (15000 BCE)</b><br>Shadows used to track apparent solar time.<br>Limited by sunlight.',
+         new Date(0,0,1), new Date(1000,0,1)],
 
-        [new Date(1656, 0, 1), 3,
-         'Pendulum Clock (1656)',
-         'Huygens introduces pendulum. Accuracy improves from minutes to seconds per day.'],
+        ['Medieval', 'Mechanical Clocks (1300 CE)',
+         '<b>Mechanical Clocks (1300 CE)</b><br>Weight-driven, verge escapement.',
+         new Date(1300,0,1), new Date(1656,0,1)],
 
-        [new Date(1761, 0, 1), 4,
-         'Marine Chronometer (1761)',
-         'Harrison solves longitude with spring-balanced, motion-resistant chronometer.'],
+        ['Scientific', 'Pendulum Clock (1656)',
+         '<b>Pendulum Clock (1656)</b><br>Huygens improves accuracy to seconds/day.',
+         new Date(1656,0,1), new Date(1761,0,1)],
 
-        [new Date(1955, 0, 1), 5,
-         'Atomic Clock (1955)',
-         'Cesium-133 resonance defines the second; accuracy reaches 10⁻¹².'],
+        ['Navigation', 'Marine Chronometer (1761)',
+         '<b>Marine Chronometer (1761)</b><br>Harrison solves longitude.',
+         new Date(1761,0,1), new Date(1955,0,1)],
 
-        [new Date(1978, 0, 1), 6,
-         'GPS Atomic Clocks (1978)',
-         'Relativity-corrected satellite clocks enable global navigation.'],
+        ['Modern', 'Atomic Clock (1955)',
+         '<b>Atomic Clock (1955)</b><br>Cesium clocks redefine accuracy.',
+         new Date(1955,0,1), new Date(1978,0,1)],
 
-        [new Date(2010, 0, 1), 7,
-         'Clock Fusion (2010+)',
-         'Redundant atomic, GNSS, and local oscillators merged for resilient timing.']
+        ['Modern', 'GPS Atomic Clocks (1978)',
+         '<b>GPS Clocks (1978)</b><br>Relativity-corrected satellite time.',
+         new Date(1978,0,1), new Date(2010,0,1)],
+
+        ['Contemporary', 'Clock Fusion (2010+)',
+         '<b>Clock Fusion (2010+)</b><br>Redundant, secure timing sources.',
+         new Date(2010,0,1), new Date(2025,0,1)]
     ]);
 
-    var chart = new google.visualization.AnnotationChart(
-        document.getElementById('chart_div')
-    );
-
-    chart.draw(data, {
-        displayAnnotations: true,
-        thickness: 2,
-        zoomStartTime: new Date(-2000, 0, 1),
-        zoomEndTime: new Date(2025, 0, 1)
+    chart.draw(dataTable, {
+        tooltip: {isHtml: true},
+        timeline: {colorByRowLabel: true},
+        height: 500
     });
 }
 
 
-
+// ---------------------------
+// FIXED WORD COUNTER
+// ---------------------------
 function countWords(text) {
-    return text.trim().split(/\s+/).filter(word => word.length > 0).length;
+    return text.trim().split(/\s+/).filter(w => w.length > 0).length;
 }
 
 function updateWordCount() {
-    const intro = document.getElementById("Introduction").innerText;
-    const sundials = document.getElementById("Sundials").innerText;
-    const mech = document.getElementById("WeightGravitydrivenmechanicalclocks").innerText;
-    const marine = document.getElementById("Marinechronometersandstabiliser").innerText;
-    const fusion = document.getElementById("Clockfusion").innerText;
-    const gps = document.getElementById("AtomicandGPSclocks").innerText;
-    const conc = document.getElementById("Conclusion").innerText;
+    const sections = [
+        "introText",
+        "sundialText",
+        "mechText",
+        "marineText",
+        "fusionText",
+        "gpsText",
+        "conclusionText"
+    ];
 
-    const totalWords = countWords(intro + sundials + mech + marine + fusion + gps + conc);
+    let total = 0;
+
+    sections.forEach(id => {
+        total += countWords(document.getElementById(id).innerText);
+    });
 
     document.getElementById("wordcount").textContent =
-        "Total Word Count (Introduction → Conclusion): " + totalWords;
+        "Total Word Count (Introduction → Conclusion): " + total;
 }
 
 updateWordCount();
 
+
+// ---------------------------
+// GITHUB LAST MODIFIED
+// ---------------------------
 async function getLastUpdatedTime() {
     const response = await fetch("https://api.github.com/repos/FEPSFY6924601/FY6924601/commits");
     const data = await response.json();
@@ -360,7 +375,6 @@ function verifyLastModified() {
 }
 
 getLastUpdatedTime();
-
 </script>
 
             </body>
