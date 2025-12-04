@@ -269,112 +269,116 @@
          <br>Ashby, N. (2003). Relativity in the Global Positioning System. Living Reviews in Relativity, [online] 6(1). doi:<a href=https://doi.org/10.12942/lrr-2003-1>https://doi.org/10.12942/lrr-2003-1</a>
          <br>All images are under creative common licence.
              </p>  
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 <script>
-// ---------------------------
-// FIXED INTERACTIVE TIMELINE
-// ---------------------------
-google.charts.load('current', {packages:['timeline']});
-google.charts.setOnLoadCallback(drawTimeline);
+  // ---- GOOGLE TIMELINE ----
+  google.charts.load('current', {packages:['timeline']});
+  google.charts.setOnLoadCallback(drawTimeline);
 
-function drawTimeline() {
-    var container = document.getElementById('chart_div');
-    var chart = new google.visualization.Timeline(container);
-    var dataTable = new google.visualization.DataTable();
+  function drawTimeline() {
+      var container = document.getElementById('chart_div');
+      var chart = new google.visualization.Timeline(container);
+      var dataTable = new google.visualization.DataTable();
 
-    dataTable.addColumn({ type: 'string', id: 'Era' });
-    dataTable.addColumn({ type: 'string', id: 'Event' });
-    dataTable.addColumn({ type: 'string', role: 'tooltip', p: {html: true}});
-    dataTable.addColumn({ type: 'date', id: 'Start' });
-    dataTable.addColumn({ type: 'date', id: 'End' });
+      dataTable.addColumn({ type: 'string', id: 'Era' });
+      dataTable.addColumn({ type: 'string', id: 'Event' });
+      dataTable.addColumn({ type: 'string', role: 'tooltip', p: {html: true}});
+      dataTable.addColumn({ type: 'date', id: 'Start' });
+      dataTable.addColumn({ type: 'date', id: 'End' });
 
-    dataTable.addRows([
-        ['Ancient', 'Sundials (15000 BCE)',
-         '<b>Sundials (15000 BCE)</b><br>Shadows used to track apparent solar time.<br>Limited by sunlight.',
-         new Date(0,0,1), new Date(1000,0,1)],
+      dataTable.addRows([
+          ['Ancient', 'Sundials (15000 BCE)',
+           '<b>Sundials (15000 BCE)</b><br>Shadows used to track apparent solar time.<br>Limited by sunlight.',
+           new Date(0,0,1), new Date(1000,0,1)],
 
-        ['Medieval', 'Mechanical Clocks (1300 CE)',
-         '<b>Mechanical Clocks (1300 CE)</b><br>Weight-driven, verge escapement.',
-         new Date(1300,0,1), new Date(1656,0,1)],
+          ['Medieval', 'Mechanical Clocks (1300 CE)',
+           '<b>Mechanical Clocks (1300 CE)</b><br>Weight-driven, verge escapement.',
+           new Date(1300,0,1), new Date(1656,0,1)],
 
-        ['Scientific', 'Pendulum Clock (1656)',
-         '<b>Pendulum Clock (1656)</b><br>Huygens improves accuracy to seconds/day.',
-         new Date(1656,0,1), new Date(1761,0,1)],
+          ['Scientific', 'Pendulum Clock (1656)',
+           '<b>Pendulum Clock (1656)</b><br>Huygens improves accuracy to seconds/day.',
+           new Date(1656,0,1), new Date(1761,0,1)],
 
-        ['Navigation', 'Marine Chronometer (1761)',
-         '<b>Marine Chronometer (1761)</b><br>Harrison solves longitude.',
-         new Date(1761,0,1), new Date(1955,0,1)],
+          ['Navigation', 'Marine Chronometer (1761)',
+           '<b>Marine Chronometer (1761)</b><br>Harrison solves longitude.',
+           new Date(1761,0,1), new Date(1955,0,1)],
 
-        ['Modern', 'Atomic Clock (1955)',
-         '<b>Atomic Clock (1955)</b><br>Cesium clocks redefine accuracy.',
-         new Date(1955,0,1), new Date(1978,0,1)],
+          ['Modern', 'Atomic Clock (1955)',
+           '<b>Atomic Clock (1955)</b><br>Cesium clocks redefine accuracy.',
+           new Date(1955,0,1), new Date(1978,0,1)],
 
-        ['Modern', 'GPS Atomic Clocks (1978)',
-         '<b>GPS Clocks (1978)</b><br>Relativity-corrected satellite time.',
-         new Date(1978,0,1), new Date(2010,0,1)],
+          ['Modern', 'GPS Atomic Clocks (1978)',
+           '<b>GPS Clocks (1978)</b><br>Relativity-corrected satellite time.',
+           new Date(1978,0,1), new Date(2010,0,1)],
 
-        ['Contemporary', 'Clock Fusion (2010+)',
-         '<b>Clock Fusion (2010+)</b><br>Redundant, secure timing sources.',
-         new Date(2010,0,1), new Date(2025,0,1)]
-    ]);
+          ['Contemporary', 'Clock Fusion (2010+)',
+           '<b>Clock Fusion (2010+)</b><br>Redundant, secure timing sources.',
+           new Date(2010,0,1), new Date(2025,0,1)]
+      ]);
 
-    chart.draw(dataTable, {
-        tooltip: {isHtml: true},
-        timeline: {colorByRowLabel: true},
-        height: 500
-    });
-}
+      chart.draw(dataTable, {
+          tooltip: {isHtml: true},
+          timeline: {colorByRowLabel: true},
+          height: 500
+      });
+  }
 
+  // ---- WORD COUNTER (Abstract → Conclusion) ----
+  function countWords(text) {
+      return text.trim().split(/\s+/).filter(w => w.length > 0).length;
+  }
 
-// ---------------------------
-// FIXED WORD COUNTER
-// ---------------------------
-function countWords(text) {
-    return text.trim().split(/\s+/).filter(w => w.length > 0).length;
-}
+  function updateWordCount() {
+      // IDs that actually exist in your HTML
+      const sectionIds = [
+          'Abstract',
+          'introText',
+          'Sundials',
+          'WeightGravitydrivenmechanicalclocks',
+          'Marinechronometersandstabiliser',
+          'Clockfusion',
+          'AtomicandGPSclocks',
+          'Conclusion'
+      ];
 
-function updateWordCount() {
-    const sections = [
-        "introText",
-        "sundialText",
-        "mechText",
-        "marineText",
-        "fusionText",
-        "gpsText",
-        "conclusionText"
-    ];
+      let total = 0;
 
-    let total = 0;
+      sectionIds.forEach(id => {
+          const el = document.getElementById(id);
+          if (el) {
+              total += countWords(el.textContent);
+          }
+      });
 
-    sections.forEach(id => {
-        total += countWords(document.getElementById(id).innerText);
-    });
+      document.getElementById("wordcount").textContent =
+          "Total Word Count (Abstract → Conclusion): " + total;
+  }
 
-    document.getElementById("wordcount").textContent =
-        "Total Word Count (Introduction → Conclusion): " + total;
-}
+  // Run after the page has loaded
+  document.addEventListener('DOMContentLoaded', () => {
+      updateWordCount();
+      getLastUpdatedTime();
+  });
 
-updateWordCount();
+  // ---- LAST MODIFIED (GitHub) ----
+  async function getLastUpdatedTime() {
+      try {
+          const response = await fetch("https://api.github.com/repos/FEPSFY6924601/FY6924601/commits");
+          const data = await response.json();
+          const lastUpdate = data[0].commit.author.date;
 
+          document.getElementById("lastModified").innerText =
+              "Last Modified (from GitHub API): " + new Date(lastUpdate).toLocaleString();
+      } catch (e) {
+          console.error(e);
+          document.getElementById("lastModified").innerText =
+              "Could not fetch last modified time.";
+      }
+  }
 
-// ---------------------------
-// GITHUB LAST MODIFIED
-// ---------------------------
-async function getLastUpdatedTime() {
-    const response = await fetch("https://api.github.com/repos/FEPSFY6924601/FY6924601/commits");
-    const data = await response.json();
-    const lastUpdate = data[0].commit.author.date;
-
-    document.getElementById("lastModified").innerText =
-        "Last Modified (from GitHub API): " + new Date(lastUpdate).toLocaleString();
-}
-
-function verifyLastModified() {
-    getLastUpdatedTime();
-}
-
-getLastUpdatedTime();
+  function verifyLastModified() {
+      getLastUpdatedTime();
+  }
 </script>
 
             </body>
