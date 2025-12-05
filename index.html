@@ -340,7 +340,20 @@
     // Calculate the sum of all selected sections
     const totalWordCount = introductionCount + SundialsCount + WeightGravitydrivenmechanicalclocksCount + MarinechronometersandstabiliserCount + ClockfusionCount + AtomicandGPSclocksCount + ConclusionCount;
 
+       // sum section titles and figcaptations
 
+  const elems = document.querySelectorAll("figcaption, h3");
+  let totalWords = 0;
+
+  elems.forEach(el => {
+    const text = el.innerText || "";
+    const words = text.match(/\b\w+\b/g);
+    totalWords += words.length; 
+  });
+
+
+
+     
      // 000000000000000000000000
 
   let text = document.body.innerText || "";
@@ -366,7 +379,7 @@ const headIdCount = displayWordCount("headId");
     //document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
     //document.getElementById("totalWordCount").innerText = `Total word count bla3: ${wordslength -AbstractCount - ReferencesCount}`;
      
-    document.getElementById("totalWordCount").innerText = `Total word count bla3: ${headIdCount}`;
+    document.getElementById("totalWordCount").innerText = `Total word count bla3: ${totalWords}`;
   }
   // Run the function for specific sections and display total count when the page loads
   window.onload = displayTotalWordCount;
