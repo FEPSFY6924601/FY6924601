@@ -343,43 +343,22 @@
        // sum section titles and figcaptations
 
   const elems = document.querySelectorAll("figcaption, h3");
-  let totalWords = 0;
+  let totalWordsFigCaptSectionTitles = 0;
 
   elems.forEach(el => {
     const text = el.innerText || "";
     const words = text.match(/\b\w+\b/g);
-    totalWords += words.length; 
+    totalWordsFigCaptSectionTitles += words.length; 
   });
 
 
 
-     
-     // 000000000000000000000000
-
-  let text = document.body.innerText || "";
-  
-  // Remove line breaks and multiple spaces
-  text = text.replace(/\s+/g, " ").trim();
-  
-  // Match word-like patterns (letters/numbers)
-  const words = text.match(/\b\w+\b/g);
-
-const  wordslength =  words.length ;
-const AbstractCount = displayWordCount("Abstract_InText");
-const ReferencesCount = displayWordCount("References_InText");
-
-const headIdCount = displayWordCount("headId");
-//const totalWordCountNew = wordslength  - AbstractCount - ReferencesCount
-     
-     // 000000000000000000000000
-     
+ 
 
 
    // Display the total word count
-    //document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
-    //document.getElementById("totalWordCount").innerText = `Total word count bla3: ${wordslength -AbstractCount - ReferencesCount}`;
-     
-    document.getElementById("totalWordCount").innerText = `Total word count bla3: ${totalWords}`;
+    document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount + totalWordsFigCaptSectionTitles}`;
+
   }
   // Run the function for specific sections and display total count when the page loads
   window.onload = displayTotalWordCount;
