@@ -2,7 +2,7 @@
 
 <html>
 
-   <head>
+   <head id="headId">
       
      <image src="download.png" alt="Banner" width="900" height="300">
         <h1><b>ENG0018 Computer Laboratory 2025/26</b><h1>
@@ -354,6 +354,8 @@
 const  wordslength =  words.length ;
 const AbstractCount = displayWordCount("Abstract_InText");
 const ReferencesCount = displayWordCount("References_InText");
+
+const headIdCount = displayWordCount("headId");
 //const totalWordCountNew = wordslength  - AbstractCount - ReferencesCount
      
      // 000000000000000000000000
@@ -362,7 +364,9 @@ const ReferencesCount = displayWordCount("References_InText");
 
    // Display the total word count
     //document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
-    document.getElementById("totalWordCount").innerText = `Total word count bla3: ${wordslength -AbstractCount - ReferencesCount}`;
+    //document.getElementById("totalWordCount").innerText = `Total word count bla3: ${wordslength -AbstractCount - ReferencesCount}`;
+     
+    document.getElementById("totalWordCount").innerText = `Total word count bla3: ${headIdCount}`;
   }
   // Run the function for specific sections and display total count when the page loads
   window.onload = displayTotalWordCount;
