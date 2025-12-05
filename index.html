@@ -1,4 +1,4 @@
-t<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html>
 
@@ -335,12 +335,34 @@ t<!DOCTYPE html>
    const ConclusionCount = displayWordCount("Conclusion_InText");
     // Calculate the sum of all selected sections
     const totalWordCount = introductionCount + SundialsCount + WeightGravitydrivenmechanicalclocksCount + MarinechronometersandstabiliserCount + ClockfusionCount + AtomicandGPSclocksCount + ConclusionCount;
-    // Display the total word count
-    document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
+
+
+     // 000000000000000000000000
+
+  let text = document.body.innerText || "";
+  
+  // Remove line breaks and multiple spaces
+  text = text.replace(/\s+/g, " ").trim();
+  
+  // Match word-like patterns (letters/numbers)
+  const words = text.match(/\b\w+\b/g);
+
+
+     // 000000000000000000000000
+     
+
+
+   // Display the total word count
+    //document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
+    document.getElementById("totalWordCount").innerText = `Total word count: ${words}`;
   }
   // Run the function for specific sections and display total count when the page loads
   window.onload = displayTotalWordCount;
 </script>
+
+
+
+               
             </body>
         </html>
 
