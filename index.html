@@ -348,9 +348,9 @@
   const words = text.match(/\b\w+\b/g);
 
 const  wordslength =  words.length ;
-const AbstractCount = displayWordCount("Abstract_InText");
-const ReferencesCount = displayWordCount("References_InText");
-const totalWordCountNew = wordslength  //- (AbstractCount + ReferencesCount)
+//const AbstractCount = displayWordCount("Abstract_InText");
+//const ReferencesCount = displayWordCount("References_InText");
+//const totalWordCountNew = wordslength  //- (AbstractCount + ReferencesCount)
      
      // 000000000000000000000000
      
@@ -358,7 +358,7 @@ const totalWordCountNew = wordslength  //- (AbstractCount + ReferencesCount)
 
    // Display the total word count
     //document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
-    document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCountNew}`;
+    document.getElementById("totalWordCount").innerText = `Total word count: ${wordslength}`;
   }
   // Run the function for specific sections and display total count when the page loads
   window.onload = displayTotalWordCount;
