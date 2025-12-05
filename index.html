@@ -347,14 +347,14 @@
   // Match word-like patterns (letters/numbers)
   const words = text.match(/\b\w+\b/g);
 
-
+const  wordslength =  words.length ;
      // 000000000000000000000000
      
 
 
    // Display the total word count
     //document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
-    document.getElementById("totalWordCount").innerText = `Total word count: ${words}`;
+    document.getElementById("totalWordCount").innerText = `Total word count: ${wordslength}`;
   }
   // Run the function for specific sections and display total count when the page loads
   window.onload = displayTotalWordCount;
