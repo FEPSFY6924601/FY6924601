@@ -326,7 +326,6 @@ t<!DOCTYPE html>
   // Function to calculate and display total word count from selected sections
   function displayTotalWordCount() {
     // Calculate word count for each section and accumulate the total
-   const AbstractCount = displayWordCount("Abstract_InText");
    const introductionCount = displayWordCount("introduction_InText");
    const SundialsCount = displayWordCount("Sundials_InText");
    const WeightGravitydrivenmechanicalclocksCount = displayWordCount("WeightGravitydrivenmechanicalclocks_InText");
@@ -335,7 +334,7 @@ t<!DOCTYPE html>
    const AtomicandGPSclocksCount = displayWordCount("AtomicandGPSclocks_InText");
    const ConclusionCount = displayWordCount("Conclusion_InText");
     // Calculate the sum of all selected sections
-    const totalWordCount = AbstractCount + introductionCount + SundialsCount + WeightGravitydrivenmechanicalclocksCount + MarinechronometersandstabiliserCount + ClockfusionCount + AtomicandGPSclocksCount + ConclusionCount;
+    const totalWordCount = introductionCount + SundialsCount + WeightGravitydrivenmechanicalclocksCount + MarinechronometersandstabiliserCount + ClockfusionCount + AtomicandGPSclocksCount + ConclusionCount;
     // Display the total word count
     document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
   }
